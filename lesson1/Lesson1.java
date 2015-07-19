@@ -7,6 +7,8 @@ package lesson1;
 
 import java.util.*;
 
+import static java.util.stream.Collectors.joining;
+
 /**
  * @author Speakjava (simon.ritter@oracle.com)
  */
@@ -41,10 +43,18 @@ public class Lesson1 {
    * of Strings provided.
    */
   private void exercise1() {
+    exercise1_d();
     exercise1_p();
   }
 
   private void exercise1_d() {
+    List<String> list = Arrays.asList(
+            "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
+
+    String firstLetters = list.stream()
+            .map(s -> String.valueOf(s.charAt(0)))
+            .collect(joining(""));
+    System.out.println(firstLetters);
   }
 
   private void exercise1_p() {
