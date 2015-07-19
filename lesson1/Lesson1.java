@@ -5,7 +5,15 @@
  */
 package lesson1;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.joining;
 
 /**
  * @author Speakjava (simon.ritter@oracle.com)
@@ -41,14 +49,22 @@ public class Lesson1 {
    * of Strings provided.
    */
   private void exercise1() {
+    exercise1d();
+  }
+
+  private void exercise1d() {
     List<String> list = Arrays.asList(
-            "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
+        "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 
     /* YOUR CODE HERE */
     Optional<String> opt = list.stream().
             map(s -> s.substring(0,1)).
             reduce((s1, s2) -> s1 + s2);
     System.out.println(opt.get());
+    String firstLetters = list.stream()
+                              .map(s -> String.valueOf(s.charAt(0)))
+                              .collect(joining(""));
+    System.out.println(firstLetters);
   }
 
   /**
